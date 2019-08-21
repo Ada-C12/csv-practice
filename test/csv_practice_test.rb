@@ -183,6 +183,7 @@ describe 'CSV Practice Methods' do
   describe 'athlete_height_in_inches' do
     it 'correctly converts the height to inches' do
       # Arrange
+      # data1 = load_data(OLYMPIC_DATA_FILENAME)
       data = load_data(OLYMPIC_DATA_FILENAME)
       
       # Act
@@ -192,7 +193,7 @@ describe 'CSV Practice Methods' do
       expect(converted_data.class).must_equal Array
       converted_data.each_with_index do |entry, index|
         expect(entry.class).must_equal Hash
-        # puts "#{data[index]}"
+        # puts "Original data #{data[index]}"
         # puts "Converted data #{entry}"
         expect(entry['Height']).must_be_close_to(data[index]['Height'].to_f / 2.5)
       end

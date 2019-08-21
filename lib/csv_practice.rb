@@ -3,7 +3,6 @@ require 'csv'
 require 'awesome_print'
 require 'pry'
 
-
 # Part 1 - CSV Practice
 def load_data(filename)
   return CSV.read(filename, headers: true).map(&:to_h)
@@ -62,8 +61,9 @@ end
 def athlete_height_in_inches(olympic_data)
   height_converted = []
   olympic_data.each do |athlete|
-    athlete["Height"] = (athlete["Height"].to_f * 0.393701)
-    height_converted.push{athlete}
+    new_athlete = athlete.clone
+    new_athlete["Height"] = (new_athlete["Height"].to_f / 2.5)
+    height_converted.push(new_athlete)
   end
   return height_converted
 end
